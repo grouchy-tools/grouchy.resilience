@@ -11,10 +11,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grouchy.Resilience.Tests", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{769E6F93-DD22-41DC-948A-E0ABBBEC9A21}"
 ProjectSection(SolutionItems) = preProject
-	LICENSE = LICENSE
-	appveyor.yml = appveyor.yml
 	.gitignore = .gitignore
 	.gitattributes = .gitattributes
+	appveyor.yml = appveyor.yml
+	LICENSE = LICENSE
+	README.md = README.md
 EndProjectSection
 EndProject
 Global

@@ -47,7 +47,7 @@ namespace Grouchy.Resilience.Tests.CircuitBreaking.CircuitBreakerStateTests
          var circuitBreakerPeriod = new CircuitBreakerPeriod {PeriodMs = 10};
          var circuitBreakerOpeningRates = A.Fake<ICircuitBreakerOpeningRates>();
          var circuitBreakerAnalyser = new StubCircuitBreakerAnalyser(analyseResponses);
-         var testSubject = new CircuitBreakerState(circuitBreakerAnalyser, circuitBreakerOpeningRates, circuitBreakerPeriod);
+         var testSubject = new CircuitBreakerState("policy", circuitBreakerAnalyser, circuitBreakerOpeningRates, circuitBreakerPeriod);
 
          A.CallTo(() => circuitBreakerOpeningRates.OpeningRates).Returns(openingRates);
          

@@ -23,7 +23,7 @@ namespace Grouchy.Resilience.Tests.CircuitBreaking.CircuitBreakerStateTests.scen
          var circuitBreakerOpeningRates = new BinaryCircuitBreakerOpeningRates();
          var circuitBreakerAnalyser = new DefaultCircuitBreakerAnalyser();
          
-         TestSubject = new CircuitBreakerState(circuitBreakerAnalyser, circuitBreakerOpeningRates, circuitBreakerPeriod);
+         TestSubject = new CircuitBreakerState("policy", circuitBreakerAnalyser, circuitBreakerOpeningRates, circuitBreakerPeriod);
          
          var cancellationTokenSource = new CancellationTokenSource();
          var monitorTask = Task.Run(() => TestSubject.MonitorAsync(cancellationTokenSource.Token));

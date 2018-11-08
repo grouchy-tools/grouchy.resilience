@@ -19,14 +19,18 @@ namespace Grouchy.Resilience.CircuitBreaking
       private int _tripLevel;
 
       public CircuitBreakerState(
+         string policy,
          ICircuitBreakerAnalyser circuitBreakerAnalyser,
          ICircuitBreakerOpeningRates circuitBreakerOpeningRates,
          ICircuitBreakerPeriod circuitBreakerPeriod)
       {
+         Policy = policy;
          _circuitBreakerAnalyser = circuitBreakerAnalyser ?? throw new ArgumentNullException(nameof(circuitBreakerAnalyser));
          _circuitBreakerOpeningRates = circuitBreakerOpeningRates ?? throw new ArgumentNullException(nameof(circuitBreakerOpeningRates));
          _circuitBreakerPeriod = circuitBreakerPeriod ?? throw new ArgumentNullException(nameof(circuitBreakerPeriod));
       }
+
+      public string Policy { get; }
 
       public double ClosedPct
       {

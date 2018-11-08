@@ -18,7 +18,7 @@
     <RepositoryUrl>git://github.com/grouchy-tools/grouchy.resilience</RepositoryUrl>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Grouchy.Resilience.Abstractions" Version="0.0.1-preview0001" />
+    <PackageReference Include="Grouchy.Resilience.Abstractions" Version="0.0.1-preview0003" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
   </ItemGroup>
 </Project>

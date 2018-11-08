@@ -13,7 +13,7 @@ namespace Grouchy.Resilience.Tests.CircuitBreaking.CircuitBreakerStateTests
       [Test]
       public void circuit_should_be_accepting_all_requests_on_creation()
       {
-         var testSubject = new CircuitBreakerState(A.Fake<ICircuitBreakerAnalyser>(), A.Fake<ICircuitBreakerOpeningRates>(), A.Fake<ICircuitBreakerPeriod>());
+         var testSubject = new CircuitBreakerState("policy", A.Fake<ICircuitBreakerAnalyser>(), A.Fake<ICircuitBreakerOpeningRates>(), A.Fake<ICircuitBreakerPeriod>());
 
          var accepts = Enumerable.Range(0, 100).Select(c => testSubject.ShouldAccept()).ToArray();
          
@@ -23,7 +23,7 @@ namespace Grouchy.Resilience.Tests.CircuitBreaking.CircuitBreakerStateTests
       [Test]
       public void circuit_should_be_100_pct_closed_on_creation()
       {
-         var testSubject = new CircuitBreakerState(A.Fake<ICircuitBreakerAnalyser>(), A.Fake<ICircuitBreakerOpeningRates>(), A.Fake<ICircuitBreakerPeriod>());
+         var testSubject = new CircuitBreakerState("policy", A.Fake<ICircuitBreakerAnalyser>(), A.Fake<ICircuitBreakerOpeningRates>(), A.Fake<ICircuitBreakerPeriod>());
          
          testSubject.ClosedPct.ShouldBe(100);
       }

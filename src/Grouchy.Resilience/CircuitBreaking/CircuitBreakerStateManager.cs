@@ -20,7 +20,7 @@ namespace Grouchy.Resilience.CircuitBreaking
          ICircuitBreakerOpeningRates circuitBreakerOpeningRates,
          ICircuitBreakerPeriod circuitBreakerPeriod)
       {
-         var circuitBreakingState = new CircuitBreakerState(circuitBreakerAnalyser, circuitBreakerOpeningRates, circuitBreakerPeriod);
+         var circuitBreakingState = new CircuitBreakerState(policy, circuitBreakerAnalyser, circuitBreakerOpeningRates, circuitBreakerPeriod);
          var task = Task.Run(() => circuitBreakingState.MonitorAsync(_stoppingCts.Token));
 
          _cache.Add(policy, new Entry(circuitBreakingState, task));
@@ -31,6 +31,11 @@ namespace Grouchy.Resilience.CircuitBreaking
          if (_cache.TryGetValue(policy, out var entry)) return entry.CircuitBreakerState;
             
          throw new InvalidOperationException("CircuitBreakerPolicy not found");
+      }
+
+      public IEnumerable<ICircuitBreakerState> GetStates()
+      {
+         return _cache.Select(e => e.Value.CircuitBreakerState);
       }
 
       public async Task StopMonitoringAsync(CancellationToken cancellationToken)
